@@ -61,7 +61,7 @@ class _addPage extends State<addPage>
               padding: new EdgeInsets.all(30.0),
               child: new MaterialButton(
                   onPressed: () {
-                    if(_controller.text != null)
+                    if(_controller.text != "")
                       _addItem(_controller.text);
                   },
                 child: new Text("Add Place"),
