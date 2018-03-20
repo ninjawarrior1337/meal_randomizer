@@ -28,7 +28,7 @@ class _MyApp extends State<MyApp> {
 
   _getPreferences() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if(prefs.getStringList("places") == null)
+    if(prefs.getStringList("places").length == 0)
     {
       places.add("Blaze Pizza");
       places.add("Panda Express");
@@ -39,6 +39,7 @@ class _MyApp extends State<MyApp> {
     }
     else
     {
+      places.clear();
       for (var place in prefs.getStringList("places"))
       {
         places.add(place);
@@ -58,7 +59,7 @@ class _MyApp extends State<MyApp> {
 
   int getRand()
   {
-    return new Random.secure().nextInt(5);
+    return new Random.secure().nextInt(places.length);
   }
 
   void _getPlace(){
