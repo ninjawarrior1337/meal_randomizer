@@ -70,7 +70,7 @@ class _settingsPage extends State<settingsPage> {
       ),
 
       floatingActionButton: new FloatingActionButton(
-        onPressed: () => Navigator.of(context).pushNamed("/settings/newItem"),
+        onPressed: () => Navigator.pushNamed(context, "newItem"),
         child: new Icon(Icons.add),
       ),
 

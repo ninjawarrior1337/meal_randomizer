@@ -17,7 +17,7 @@ class _addPage extends State<addPage>
     _places.add(newItem);
     _setPreferences();
     Navigator.pop(context);
-    Navigator.pushReplacementNamed(context, "/settings");
+    Navigator.pushReplacementNamed(context, "settings");
   }
 
   _getPreferences() async {

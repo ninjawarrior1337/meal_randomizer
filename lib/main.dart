@@ -4,16 +4,29 @@ import 'package:meal_randomizer/settings/settings.dart' as settingsPage;
 import 'package:meal_randomizer/settings/addItem.dart' as addPage;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
+import 'package:fluro/fluro.dart';
 
-void main() => runApp(
-    new MaterialApp(
-      home: new MyApp(),
-      routes: <String, WidgetBuilder> {
-        '/settings': (BuildContext context) => new settingsPage.settingsPage(),
-        '/settings/newItem': (BuildContext context) => new addPage.addPage()
-      }
-    )
-);
+void main() {
+  Router router = new Router();
+
+  router.define('settings', handler: new Handler(
+    handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return new settingsPage.settingsPage();
+  }));
+
+  router.define('newItem', handler: new Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return new addPage.addPage();
+  }));
+
+  runApp(
+      new MaterialApp(
+        home: new MyApp(),
+        onGenerateRoute: router.generator,
+      )
+  );
+}
+
+
 
 class MyApp extends StatefulWidget
 {
